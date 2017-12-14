@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="letter-slide">
-            <div class="letter-item" v-for="item in letters">{{item}}</div>
+            <div class="letter-item" v-for="(item, index) in letters" v-bind="index">{{item}}</div>
         </div>
     </div>
   </div>

@@ -2,11 +2,11 @@
   <div>
   <div class="login-bg">
     <div class="login-box" >
-      <div v-bind:class="{ 'login-dot-big': show,'login-dot-small':!show}" class="pointer" @mouseover="over('login')" @click="toLogin()">
-        <div class="dot-font">登陆</div>
+      <div v-bind:class="{ 'login-dot-big': show,'login-dot-small':!show}" class="pointer" @mouseover="over('login')" @click="toLogin()" >
+        <div class="dot-font" style="top:50%;margin-top:-10px;    position: relative;">登陆</div>
       </div>
-      <div v-bind:class="{ 'register-dot-big': !show,'register-dot-small':show}"  class="pointer"  @mouseover="over('reg')">
-        <div class="dot-font">注册</div>
+      <div v-bind:class="{ 'register-dot-big': !show,'register-dot-small':show}"  class="pointer"  @mouseover="over('reg')" >
+        <div class="dot-font" style="top:50%;margin-top:-10px;    position: relative;">注册</div>
       </div>
     </div>
   </div>
