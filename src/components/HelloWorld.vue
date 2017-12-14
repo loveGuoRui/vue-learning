@@ -7,6 +7,7 @@
       <div class="title" v-show="isShown" @click="tap()"></div>
       <span>window:{{window}}------el:{{el}}-------documents{{documents}}</span>
       <div class="item" id="test"></div>
+      <input v-model="rate" @keyup="matchRate($event)" @keydown="matchPrevent($event)"/>
     </div>
     
   </div>
@@ -22,7 +23,8 @@ export default {
        scroll:null,
        window:0,
        el:0,
-       documents:0
+       documents:0,
+       rate:0.0
 
     }
   },
@@ -45,8 +47,8 @@ export default {
 
     // document.getElementById('content-box').addEventListener('touchmove', this.documents1,false)
     // document.getElementById('content-box').addEventListener('touchend', this.onscroll,false)
-    console.log(this.$el.querySelector('#content-box'))
-    this.$el.querySelector('#content-box').addEventListener('scroll', this.documents1,false)
+    // console.log(this.$el.querySelector('#content-box'))
+    // this.$el.querySelector('#content-box').addEventListener('scroll', this.documents1,false)
 
     // this.$el.querySelector('content-box').addEventListener('scroll', this.handleScroll,false)
 
@@ -79,6 +81,40 @@ export default {
       console.log('-------------------------`documents----------------------')
       console.log(document.getElementById('content-box').scrollTop)
       this.documents++
+    },
+    matchRate(){
+      //  var reg = /^[0-9]\d{0,14}\.\d{1,2}|0\.\d{1,2}|[0-9]\d{0,14}|\d$/
+      //  var str = this.rate;
+      //  var matchs = str.match(reg);
+      //  if(matchs!=null &&matchs.input.charAt(matchs.input.length - 1)!='.'){
+      //   if(matchs[0].length!= str.length){
+      //     this.rate=matchs[0]
+      //   }
+      //  }
+      // if(matchs==null){
+      //   this.rate=''
+      // }
+    },
+    matchPrevent(e){
+      console.log(e)
+      console.log(this.rate)
+      if(60<=e.keyCode&&e.keyCode<=90){
+        e.preventDefault();
+      }
+      if(e.keyCode==190){
+         if(this.rate==null||this.rate==""){
+          e.preventDefault()
+          return;
+        }
+        console.log(this.rate.indexOf("."))
+        if(this.rate.charAt(this.rate.length - 1) =='.'){
+            e.preventDefault()
+        }
+       
+        if(this.rate.indexOf(".")>-1){
+            e.preventDefault()
+        }
+      }
     }
   }
 }

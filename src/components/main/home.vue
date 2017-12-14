@@ -27,9 +27,12 @@
         <!--搜索页面-->
        
        <!--标签和书签页面-->
-       <div class="tags-bg"> 
-            <div class="search-bg"> 
-
+       <div class="main-bottom"> 
+            <div class="time"> 
+                        {{time}}
+            </div>
+            <div class="time" style="margin-top:10px"> 
+                       forever together
             </div>
        </div>
 
@@ -55,8 +58,16 @@ export default {
         showAdd:false,
         trandeg:false,
         shadow:false,
-        placeholder:'郭蕊。我爱你'
+        placeholder:'郭蕊。我爱你',
+        time:null
     }
+  },
+  created(){
+      var self = this;
+        	setInterval(function () { self.getCountdown(); }, 500);
+  },
+  mounted(){
+
   },
   methods:{
         change(){
@@ -71,6 +82,28 @@ export default {
             // console.log("leave")
             this.shadow = false;
 
+        },
+        getCountdown(){
+            	function pad(n) {
+		return (n < 10 ? '0' : '') + n;
+	}
+        var target_date = new Date("May 1,2017 00:00:00").getTime(); // set the countdown date
+	
+	    var days, hours, minutes, seconds; // variables for time units
+
+        var current_date = new Date().getTime();
+		var seconds_left = ( current_date - target_date) / 1000;
+
+		days = pad( parseInt(seconds_left / 86400) );
+		seconds_left = seconds_left % 86400;
+		 
+		hours = pad( parseInt(seconds_left / 3600) );
+		seconds_left = seconds_left % 3600;
+		  
+		minutes = pad( parseInt(seconds_left / 60) );
+		seconds = pad( parseInt( seconds_left % 60 ) );
+
+        this.time = days+'天'+hours +'小时'+ minutes+'分钟'+ seconds+'秒钟'
         }
   }
 }
@@ -231,6 +264,14 @@ border-top: 1px solid  #63B8FF;
   }
   .add-font{
 
+  }
+  .main-bottom{
+    bottom: 50px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #63B8FF;
+    z-index: 8888
   }
   /*.add-btn{
     height: 102px;

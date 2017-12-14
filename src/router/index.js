@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import test from '@/components/test'
 import Login from '@/components/before/login'
 import Home from '@/components/main/home'
+import tags from '@/components/main/tags'
+
 
 
 
@@ -21,6 +23,11 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/tags',
+      name: 'tags',
+      component: tags
     },
      {
       path: '/test',
