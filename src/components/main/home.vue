@@ -179,12 +179,12 @@ export default {
   }
   .add-input{
     margin: 45px;
-    animation:add-input 0.5s
+    animation:add-input 0.3s
   }
 
   .add-input-high{
     margin: 35px;
-    animation:add-input-high 0.5s
+    animation:add-input-high 0.3s
   }
     @keyframes add-input{
       from{ margin: 35px;}
