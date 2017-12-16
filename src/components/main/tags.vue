@@ -37,8 +37,8 @@ export default {
     //   document.getElementById('tag-bg').scrollTop =  this.$el.querySelector('#'+e).offsetTop;
 
       $('#tag-bg').animate({
-                        scrollTop:  this.$el.querySelector('#'+e).offsetTop
-                    }, 800);
+            scrollTop:  this.$el.querySelector('#'+e).offsetTop
+        }, 800);
       }
   }
 
