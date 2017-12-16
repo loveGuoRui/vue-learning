@@ -1,7 +1,7 @@
 <template>
   <div class="tags-bg">
     <div class="search-bg"></div>
-    <div class="tag-bg">
+    <div class="tag-bg" id='tag-bg'>
         <div class="tag-box">
             <div class="tags-body" v-for="item in tags">
                 <div class="tag-line" v-bind:id="item.class">{{item.class}}</div>
@@ -20,17 +20,25 @@
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'tags',
   data () {
     return {
      letters:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','#'],
-     tags:[ {class:'A',tag:[{name:"AngularJs",Id:'001',icon:''},{name:"Android",Id:'002',icon:''}]},{class:'V',tag:[{name:'Vue',id:'003',icon:''}]},{class:'V',tag:[{name:'Vue',id:'003',icon:''}]},{class:'V',tag:[{name:'Vue',id:'003',icon:''}]},{class:'V',tag:[{name:'Vue',id:'003',icon:''}]}]
+     tags:[ {class:'A',tag:[{name:"AngularJs",Id:'001',icon:''},{name:"Android",Id:'002',icon:''}]},{class:'B',tag:[{name:'Vue',id:'003',icon:''}]},{class:'C',tag:[{name:'Vue',id:'003',icon:''}]},{class:'D',tag:[{name:'Vue',id:'003',icon:''}]},{class:'E',tag:[{name:'Vue',id:'003',icon:''}]},{class:'F',tag:[{name:'Vue',id:'003',icon:''}]},{class:'G',tag:[{name:'Vue',id:'003',icon:''}]},{class:'H',tag:[{name:'Vue',id:'003',icon:''}]},{class:'I',tag:[{name:'Vue',id:'003',icon:''}]},{class:'J',tag:[{name:'Vue',id:'003',icon:''}]},{class:'K',tag:[{name:'Vue',id:'003',icon:''}]},{class:'L',tag:[{name:'Vue',id:'003',icon:''}]},{class:'M',tag:[{name:'Vue',id:'003',icon:''}]},{class:'N',tag:[{name:'Vue',id:'003',icon:''}]}]
     }
   },
   methods:{
       goAnchor(e){
+         
         // document.getElementById(e).scrollIntoView()
+      console.log(  this.$el.querySelector('#'+e).offsetTop)
+    //   document.getElementById('tag-bg').scrollTop =  this.$el.querySelector('#'+e).offsetTop;
+
+      $('#tag-bg').animate({
+                        scrollTop:  this.$el.querySelector('#'+e).offsetTop
+                    }, 800);
       }
   }
 
@@ -59,6 +67,8 @@ export default {
 }
 .tag-bg{
     padding: 30px 150px;
+        height: 100%;
+    overflow: auto;
 }
 .tag-line{
     font-size: 25px;

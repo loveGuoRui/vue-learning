@@ -5,12 +5,14 @@ import test from '@/components/test'
 import Login from '@/components/before/login'
 import Home from '@/components/main/home'
 import tags from '@/components/main/tags'
+import Jquery from 'jquery'
 
 
 
 
 
 Vue.use(Router)
+// Vue.use(Jquery)
 
 export default new Router({
   routes: [
