@@ -1,7 +1,7 @@
 <template>
   <div class="tags-bg">
     <div class="search-bg"></div>
-    <div class="tag-bg" id='tag-bg'>
+    <div class="tag-bg" id='tag-bg' @scroll='scroll()'>
         <div class="tag-box">
             <div class="tags-body" v-for="item in tags">
                 <div class="tag-line" v-bind:id="item.class">{{item.class}}</div>
@@ -16,6 +16,10 @@
             <div class="letter-item" v-for="item in letters" @click="goAnchor(item)">{{item}}</div>
         </div>
     </div>
+    <div class="bottom-add" v-if="!isTop">
+        <img src="../../../static/open.png" class="add-img" @click="top()"/>
+        
+    </div>
   </div>
 </template>
 
@@ -25,9 +29,13 @@ export default {
   name: 'tags',
   data () {
     return {
+     isTop:true,
      letters:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','#'],
      tags:[ {class:'A',tag:[{name:"AngularJs",Id:'001',icon:''},{name:"Android",Id:'002',icon:''}]},{class:'B',tag:[{name:'Vue',id:'003',icon:''}]},{class:'C',tag:[{name:'Vue',id:'003',icon:''}]},{class:'D',tag:[{name:'Vue',id:'003',icon:''}]},{class:'E',tag:[{name:'Vue',id:'003',icon:''}]},{class:'F',tag:[{name:'Vue',id:'003',icon:''}]},{class:'G',tag:[{name:'Vue',id:'003',icon:''}]},{class:'H',tag:[{name:'Vue',id:'003',icon:''}]},{class:'I',tag:[{name:'Vue',id:'003',icon:''}]},{class:'J',tag:[{name:'Vue',id:'003',icon:''}]},{class:'K',tag:[{name:'Vue',id:'003',icon:''}]},{class:'L',tag:[{name:'Vue',id:'003',icon:''}]},{class:'M',tag:[{name:'Vue',id:'003',icon:''}]},{class:'N',tag:[{name:'Vue',id:'003',icon:''}]}]
     }
+  },
+  mounted(){
+
   },
   methods:{
       goAnchor(e){
@@ -39,6 +47,18 @@ export default {
       $('#tag-bg').animate({
             scrollTop:  this.$el.querySelector('#'+e).offsetTop
         }, 800);
+      },
+      top(){
+          $('#tag-bg').animate({
+            scrollTop:  0
+        }, 500);
+      },
+      scroll(){
+            if(document.getElementById('tag-bg').scrollTop > 10){
+                this.isTop=false
+            }else{
+                this.isTop=true
+            }
       }
   }
 
@@ -58,12 +78,16 @@ export default {
     right: 25px;
     top: 100px;
     color: #63B8FF;
-    opacity: 100%
-}
+    opacity: 100%;
+        text-align: center;
+}   
 .letter-item{
     cursor: pointer;
     margin-top: 2px;
     font-size: 14px;
+}
+.letter-item:hover{
+     text-shadow: 0 0 10px #63B8FF;
 }
 .tag-bg{
     padding: 30px 150px;
@@ -85,6 +109,22 @@ export default {
     float: left;
      margin-left: 20px;
 }
+  .bottom-add{
+      text-align: center;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 100px;
+      height: auto;
+      margin: 50px 20px;
+      z-index: 999;
+      
+  }
+    .add-img{
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+  }
 
   
 </style>
